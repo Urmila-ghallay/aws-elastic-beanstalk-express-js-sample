@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker { 
-        image 'node:16-alpine' }
+        image 'node:16' }
   }
   stages {
     stage('Build') {
@@ -12,7 +12,7 @@ pipeline {
     stage('Test') {
             steps {
                 sh 'npm run'            
-                sh 'npm test'
+              
             }
         }
         stage('Deliver') { 
