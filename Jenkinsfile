@@ -11,13 +11,14 @@ pipeline {
     }
     
     stage('Security Testing') {
-            steps {
-                echo 'Testing...'
-                snykSecurity(
-                    snykInstallation: 'snyk@latest',
-                    snykTokenId: 'Snyk-API-Token',
-          
-        )
+      steps {
+        script {
+          // Run Snyk test
+          withCredentials([string(credentialsId: 'Snyk-API', variable: 'SNYK_TOKEN')]) {
+            sh 'snyk test --token=$SNYK_TOKEN'
+          }
+        }
+      
       }
     }
     stage('Deploy') { 
