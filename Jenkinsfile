@@ -9,19 +9,21 @@ pipeline {
         sh 'npm install --save'
       }
     }
-    stage('Test') {
+    
+    stage('Security Testing') {
             steps {
-                sh 'npm run'
-                sh 'npm start'
-              
-            }
-        }
-        stage('Deliver') { 
+                echo 'Testing...'
+                snykSecurity(
+                    snykInstallation: 'snyk@latest',
+                    snykTokenId: 'Snyk-API-Token',
+          
+        )
+      }
+    }
+    stage('Deploy') { 
             steps {
                 echo 'Deploying application...'
             }
         }
     }
 }
-
-
