@@ -43,10 +43,7 @@ pipeline {
 
   post {
       // Clean after build
-    always {
-      // log file name
-      archiveArtifacts artifacts: '/var/jenkins_home/log/', fingerprint: true  
-      echo 'logs'   
+    always {  
       cleanWs()
     }
       
