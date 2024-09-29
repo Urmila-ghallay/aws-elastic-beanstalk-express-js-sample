@@ -45,7 +45,7 @@ pipeline {
       // Clean after build
     always {
       // log file name
-      archiveArtifacts artifacts: 'logging.txt', fingerprint: true  
+      archiveArtifacts artifacts: 'log', fingerprint: true  
       echo 'logs'   
       cleanWs()
     }
