@@ -13,10 +13,10 @@ pipeline {
     stage('Security Testing') {
       steps {
         echo 'Testing...'
-          snykSecurity(
-            snykInstallation: 'snyk@latest',
-            snykTokenId: 'snyk-api-token',
-        
+        snykSecurity(
+          snykInstallation: 'snyk@latest',
+          snykTokenId: 'snyk-api-token',
+          severity: 'critical',
         )
       
       }
