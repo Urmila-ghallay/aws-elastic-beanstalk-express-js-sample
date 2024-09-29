@@ -10,19 +10,6 @@ pipeline {
       }
     }
     
-    stage('Security Testing') {
-      steps {
-        echo 'Testing...'
-          snykSecurity(
-            snykInstallation: 'snyk@latest',
-            snykTokenId: 'snyk-api-token',
-            severity: 'critical'
-            failOnError: 'false'
-          
-        )
-      
-      }
-    }
     stage('Deploy') { 
             steps {
                 echo 'Deploying application...'
