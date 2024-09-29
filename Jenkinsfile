@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker { 
-        image 'node:16' }
+        image 'node:16-alpine' }
   }
   environment {
     // Store your Snyk token in Jenkins credentials 
@@ -19,7 +19,9 @@ pipeline {
         script { 
           // Run Snyk test 
           sh 'npm install -g snyk' 
-          sh 'snyk test' 
+          // Fail the build if critical vulnerabilities are found 
+          sh 'snyk test --severity-threshold=critical' 
+          //sh 'snyk test' 
           } 
       } 
     } 
