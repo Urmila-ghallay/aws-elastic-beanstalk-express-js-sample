@@ -45,7 +45,7 @@ pipeline {
       // Clean after build
     always {
       // log file name
-      archiveArtifacts artifacts: 'log', fingerprint: true  
+      archiveArtifacts artifacts: '/var/jenkins_home/log/', fingerprint: true  
       echo 'logs'   
       cleanWs()
     }
