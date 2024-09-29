@@ -19,8 +19,8 @@ pipeline {
         script { 
           // Run Snyk test 
           sh 'npm install -g snyk' 
-          // Fail the build if critical vulnerabilities are found 
-          sh 'snyk test --severity-threshold=critical' 
+          // Fails the build if critical vulnerabilities are found and outputs the log to snyk-failure-log.txt file
+          sh 'snyk test --severity-threshold=critical | tee snyk-failure-log.txt' 
           //sh 'snyk test' 
           } 
       } 
@@ -44,6 +44,9 @@ pipeline {
   post {
       // Clean after build
     always {
+      // log file name
+      archiveArtifacts artifacts: 'logging.txt', fingerprint: true  
+      echo 'logs' }  
       cleanWs()
       
     }
