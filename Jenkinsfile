@@ -42,18 +42,11 @@ pipeline {
   post {
       // Clean after build
     always {
-      echo 'Cleaning up' }
-      sucess {
-        echo 'Build completed successfully' }
-
-      failure {
-        echo 'build failed'
-      }
-
-
-    }
-      //cleanWs()
+      cleanWs()
       
+    }
+      
+  }   
       
 }
 
