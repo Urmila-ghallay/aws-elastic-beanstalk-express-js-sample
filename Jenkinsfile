@@ -46,10 +46,11 @@ pipeline {
     always {
       // log file name
       archiveArtifacts artifacts: 'logging.txt', fingerprint: true  
-      echo 'logs' }  
+      echo 'logs'   
       cleanWs()
-      
     }
+      
+  }
       
 }   
       
